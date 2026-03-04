@@ -6,14 +6,68 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		8FB60E492F584ADF00BDE229 /* AppsFlyerLib in Frameworks */ = {isa = PBXBuildFile; productRef = 8FB60E482F584ADF00BDE229 /* AppsFlyerLib */; };
+		8FB60E4C2F584B3000BDE229 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 8FB60E4B2F584B3000BDE229 /* FirebaseAuth */; };
+		8FB60E4E2F584B3000BDE229 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 8FB60E4D2F584B3000BDE229 /* FirebaseDatabase */; };
+		8FB60E502F584B3000BDE229 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 8FB60E4F2F584B3000BDE229 /* FirebaseMessaging */; };
+		8FB60E592F584C4F00BDE229 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 8FB60E582F584C4F00BDE229 /* FirebaseFirestore */; };
+		8FB60E692F58513500BDE229 /* ForgingExtensionNotifications.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 8FB60E622F58513500BDE229 /* ForgingExtensionNotifications.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		8FB60E702F58516100BDE229 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 8FB60E6F2F58516100BDE229 /* FirebaseMessaging */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		8FB60E672F58513500BDE229 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8FB607722F43CA1A00BDE229 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8FB60E612F58513500BDE229;
+			remoteInfo = ForgingExtensionNotifications;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		8FB60E6E2F58513500BDE229 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				8FB60E692F58513500BDE229 /* ForgingExtensionNotifications.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		8FB6077A2F43CA1A00BDE229 /* RoutineForge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RoutineForge.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8FB60E5D2F5850A800BDE229 /* RoutineForge-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "RoutineForge-Info.plist"; sourceTree = "<group>"; };
+		8FB60E622F58513500BDE229 /* ForgingExtensionNotifications.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ForgingExtensionNotifications.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		8FB60E6A2F58513500BDE229 /* Exceptions for "ForgingExtensionNotifications" folder in "ForgingExtensionNotifications" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 8FB60E612F58513500BDE229 /* ForgingExtensionNotifications */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		8FB6077C2F43CA1A00BDE229 /* Routine Forge */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = "Routine Forge";
+			sourceTree = "<group>";
+		};
+		8FB60E632F58513500BDE229 /* ForgingExtensionNotifications */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				8FB60E6A2F58513500BDE229 /* Exceptions for "ForgingExtensionNotifications" folder in "ForgingExtensionNotifications" target */,
+			);
+			path = ForgingExtensionNotifications;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -23,6 +77,19 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8FB60E502F584B3000BDE229 /* FirebaseMessaging in Frameworks */,
+				8FB60E4E2F584B3000BDE229 /* FirebaseDatabase in Frameworks */,
+				8FB60E492F584ADF00BDE229 /* AppsFlyerLib in Frameworks */,
+				8FB60E592F584C4F00BDE229 /* FirebaseFirestore in Frameworks */,
+				8FB60E4C2F584B3000BDE229 /* FirebaseAuth in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8FB60E5F2F58513500BDE229 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8FB60E702F58516100BDE229 /* FirebaseMessaging in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -32,7 +99,10 @@
 		8FB607712F43CA1A00BDE229 = {
 			isa = PBXGroup;
 			children = (
+				8FB60E5D2F5850A800BDE229 /* RoutineForge-Info.plist */,
 				8FB6077C2F43CA1A00BDE229 /* Routine Forge */,
+				8FB60E632F58513500BDE229 /* ForgingExtensionNotifications */,
+				8FB60E572F584C4F00BDE229 /* Frameworks */,
 				8FB6077B2F43CA1A00BDE229 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -41,8 +111,16 @@
 			isa = PBXGroup;
 			children = (
 				8FB6077A2F43CA1A00BDE229 /* RoutineForge.app */,
+				8FB60E622F58513500BDE229 /* ForgingExtensionNotifications.appex */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		8FB60E572F584C4F00BDE229 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -55,20 +133,50 @@
 				8FB607762F43CA1A00BDE229 /* Sources */,
 				8FB607772F43CA1A00BDE229 /* Frameworks */,
 				8FB607782F43CA1A00BDE229 /* Resources */,
+				8FB60E6E2F58513500BDE229 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				8FB60E682F58513500BDE229 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				8FB6077C2F43CA1A00BDE229 /* Routine Forge */,
 			);
 			name = RoutineForge;
 			packageProductDependencies = (
+				8FB60E482F584ADF00BDE229 /* AppsFlyerLib */,
+				8FB60E4B2F584B3000BDE229 /* FirebaseAuth */,
+				8FB60E4D2F584B3000BDE229 /* FirebaseDatabase */,
+				8FB60E4F2F584B3000BDE229 /* FirebaseMessaging */,
+				8FB60E582F584C4F00BDE229 /* FirebaseFirestore */,
 			);
 			productName = "Routine Forge";
 			productReference = 8FB6077A2F43CA1A00BDE229 /* RoutineForge.app */;
 			productType = "com.apple.product-type.application";
+		};
+		8FB60E612F58513500BDE229 /* ForgingExtensionNotifications */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8FB60E6B2F58513500BDE229 /* Build configuration list for PBXNativeTarget "ForgingExtensionNotifications" */;
+			buildPhases = (
+				8FB60E5E2F58513500BDE229 /* Sources */,
+				8FB60E5F2F58513500BDE229 /* Frameworks */,
+				8FB60E602F58513500BDE229 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				8FB60E632F58513500BDE229 /* ForgingExtensionNotifications */,
+			);
+			name = ForgingExtensionNotifications;
+			packageProductDependencies = (
+				8FB60E6F2F58516100BDE229 /* FirebaseMessaging */,
+			);
+			productName = ForgingExtensionNotifications;
+			productReference = 8FB60E622F58513500BDE229 /* ForgingExtensionNotifications.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -83,6 +191,9 @@
 					8FB607792F43CA1A00BDE229 = {
 						CreatedOnToolsVersion = 16.4;
 					};
+					8FB60E612F58513500BDE229 = {
+						CreatedOnToolsVersion = 16.4;
+					};
 				};
 			};
 			buildConfigurationList = 8FB607752F43CA1A00BDE229 /* Build configuration list for PBXProject "RoutineForge" */;
@@ -94,18 +205,30 @@
 			);
 			mainGroup = 8FB607712F43CA1A00BDE229;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				8FB60E472F584ADF00BDE229 /* XCRemoteSwiftPackageReference "AppsFlyerFramework" */,
+				8FB60E4A2F584B3000BDE229 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 8FB6077B2F43CA1A00BDE229 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				8FB607792F43CA1A00BDE229 /* RoutineForge */,
+				8FB60E612F58513500BDE229 /* ForgingExtensionNotifications */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		8FB607782F43CA1A00BDE229 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8FB60E602F58513500BDE229 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -122,7 +245,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		8FB60E5E2F58513500BDE229 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		8FB60E682F58513500BDE229 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8FB60E612F58513500BDE229 /* ForgingExtensionNotifications */;
+			targetProxy = 8FB60E672F58513500BDE229 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		8FB607842F43CA1B00BDE229 /* Debug */ = {
@@ -249,7 +387,10 @@
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "RoutineForge-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "ForgeFlow PRO";
+				INFOPLIST_KEY_NSCameraUsageDescription = "Allow to use this feature in our application.";
+				INFOPLIST_KEY_NSUserTrackingUsageDescription = "ForgeFlow PRO may use limited device-related technical data to support workflow features, monitor system performance, and improve tool reliability. This information is processed exclusively for internal service optimization and maintenance. We do not use this data to track users across other apps or websites, and it is not shared for third-party advertising or marketing purposes.";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -264,7 +405,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 15.3;
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.20.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.forgeapp.RoutineForge;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				REGISTER_APP_GROUPS = YES;
@@ -288,7 +429,10 @@
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "RoutineForge-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "ForgeFlow PRO";
+				INFOPLIST_KEY_NSCameraUsageDescription = "Allow to use this feature in our application.";
+				INFOPLIST_KEY_NSUserTrackingUsageDescription = "ForgeFlow PRO may use limited device-related technical data to support workflow features, monitor system performance, and improve tool reliability. This information is processed exclusively for internal service optimization and maintenance. We do not use this data to track users across other apps or websites, and it is not shared for third-party advertising or marketing purposes.";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -303,7 +447,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 15.3;
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.20.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.forgeapp.RoutineForge;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				REGISTER_APP_GROUPS = YES;
@@ -314,6 +458,67 @@
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 				XROS_DEPLOYMENT_TARGET = 2.5;
+			};
+			name = Release;
+		};
+		8FB60E6C2F58513500BDE229 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ForgingExtensionNotifications/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = ForgingExtensionNotifications;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.forgeapp.RoutineForge.ForgingExtensionNotifications;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		8FB60E6D2F58513500BDE229 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ForgingExtensionNotifications/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = ForgingExtensionNotifications;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.forgeapp.RoutineForge.ForgingExtensionNotifications;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
@@ -338,7 +543,68 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		8FB60E6B2F58513500BDE229 /* Build configuration list for PBXNativeTarget "ForgingExtensionNotifications" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8FB60E6C2F58513500BDE229 /* Debug */,
+				8FB60E6D2F58513500BDE229 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		8FB60E472F584ADF00BDE229 /* XCRemoteSwiftPackageReference "AppsFlyerFramework" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/AppsFlyerSDK/AppsFlyerFramework";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.17.8;
+			};
+		};
+		8FB60E4A2F584B3000BDE229 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 12.10.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		8FB60E482F584ADF00BDE229 /* AppsFlyerLib */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8FB60E472F584ADF00BDE229 /* XCRemoteSwiftPackageReference "AppsFlyerFramework" */;
+			productName = AppsFlyerLib;
+		};
+		8FB60E4B2F584B3000BDE229 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8FB60E4A2F584B3000BDE229 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		8FB60E4D2F584B3000BDE229 /* FirebaseDatabase */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8FB60E4A2F584B3000BDE229 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseDatabase;
+		};
+		8FB60E4F2F584B3000BDE229 /* FirebaseMessaging */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8FB60E4A2F584B3000BDE229 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseMessaging;
+		};
+		8FB60E582F584C4F00BDE229 /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8FB60E4A2F584B3000BDE229 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		8FB60E6F2F58516100BDE229 /* FirebaseMessaging */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8FB60E4A2F584B3000BDE229 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseMessaging;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 8FB607722F43CA1A00BDE229 /* Project object */;
 }

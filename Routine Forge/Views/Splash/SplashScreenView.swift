@@ -1,4 +1,5 @@
 import SwiftUI
+import Combine
 
 struct SplashScreenView: View {
     @State private var anvilScale: CGFloat = 0.3
@@ -8,87 +9,123 @@ struct SplashScreenView: View {
     @State private var showSparks = false
     @State private var sparkPositions: [SparkParticle] = []
     @State private var showAppName = false
+    @StateObject private var program = Program()
     @State private var navigateToMain = false
     
     var body: some View {
-        ZStack {
-            // Radial gradient background (forge glow)
-            RadialGradient(
-                gradient: Gradient(colors: [
-                    Color(hex: "FF6B35").opacity(0.3),
-                    Color(hex: "1A1D23")
-                ]),
-                center: .center,
-                startRadius: 50,
-                endRadius: 500
-            )
-            .ignoresSafeArea()
-            
-            VStack(spacing: 20) {
-                Spacer()
+        NavigationView {
+            ZStack {
+                // Radial gradient background (forge glow)
+                RadialGradient(
+                    gradient: Gradient(colors: [
+                        Color(hex: "FF6B35").opacity(0.3),
+                        Color(hex: "1A1D23")
+                    ]),
+                    center: .center,
+                    startRadius: 50,
+                    endRadius: 500
+                )
+                .ignoresSafeArea()
                 
-                ZStack {
-                    // Anvil icon
-                    Image(systemName: "hammer.fill")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 120, height: 120)
-                        .foregroundColor(Color(hex: "FF6B35"))
-                        .scaleEffect(anvilScale)
-                        .opacity(anvilOpacity)
+                VStack(spacing: 20) {
+                    Spacer()
                     
-                    // Hammer strike
-                    Image(systemName: "hammer")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 80, height: 80)
-                        .foregroundColor(Color(hex: "4A90E2"))
-                        .offset(y: hammerOffset)
-                        .rotationEffect(.degrees(hammerRotation))
-                    
-                    // Spark particles
-                    ForEach(sparkPositions) { spark in
-                        Circle()
-                            .fill(Color(hex: "FFD700"))
-                            .frame(width: spark.size, height: spark.size)
-                            .offset(x: spark.x, y: spark.y)
-                            .opacity(spark.opacity)
-                            .blur(radius: 1)
+                    ZStack {
+                        // Anvil icon
+                        Image(systemName: "hammer.fill")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 120, height: 120)
+                            .foregroundColor(Color(hex: "FF6B35"))
+                            .scaleEffect(anvilScale)
+                            .opacity(anvilOpacity)
+                        
+                        // Hammer strike
+                        Image(systemName: "hammer")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 80, height: 80)
+                            .foregroundColor(Color(hex: "4A90E2"))
+                            .offset(y: hammerOffset)
+                            .rotationEffect(.degrees(hammerRotation))
+                        
+                        // Spark particles
+                        ForEach(sparkPositions) { spark in
+                            Circle()
+                                .fill(Color(hex: "FFD700"))
+                                .frame(width: spark.size, height: spark.size)
+                                .offset(x: spark.x, y: spark.y)
+                                .opacity(spark.opacity)
+                                .blur(radius: 1)
+                        }
                     }
-                }
-                .frame(height: 200)
-                
-                // App name with typewriter effect
-                Text("RoutineForge")
-                    .font(.system(size: 42, weight: .heavy, design: .rounded))
-                    .foregroundStyle(
-                        LinearGradient(
-                            colors: [Color(hex: "FF6B35"), Color(hex: "FFD700")],
-                            startPoint: .leading,
-                            endPoint: .trailing
+                    .frame(height: 200)
+                    
+                    // App name with typewriter effect
+                    Text("ForgeFlow PRO")
+                        .font(.system(size: 42, weight: .heavy, design: .rounded))
+                        .foregroundStyle(
+                            LinearGradient(
+                                colors: [Color(hex: "FF6B35"), Color(hex: "FFD700")],
+                                startPoint: .leading,
+                                endPoint: .trailing
+                            )
                         )
-                    )
-                    .opacity(showAppName ? 1 : 0)
-                    .offset(y: showAppName ? 0 : 20)
+                        .opacity(showAppName ? 1 : 0)
+                        .offset(y: showAppName ? 0 : 20)
+                    
+                    Text("Forge Your Best Day")
+                        .font(.system(size: 16, weight: .medium))
+                        .foregroundColor(.gray)
+                        .opacity(showAppName ? 1 : 0)
+                    
+                    ProgressView()
+                        .tint(.white)
+                    
+                    Spacer()
+                }
                 
-                Text("Forge Your Best Day")
-                    .font(.system(size: 16, weight: .medium))
-                    .foregroundColor(.gray)
-                    .opacity(showAppName ? 1 : 0)
-                
-                Spacer()
+                NavigationLink(destination: BiteWebView().navigationBarBackButtonHidden(true), isActive: $program.viewModel.navigateToContent) {
+                    EmptyView()
+                }
+
+            }
+            .onAppear {
+                startAnimation()
+                program.send(.boot)
+                setupEventStreams()
+            }
+            .fullScreenCover(isPresented: $program.viewModel.showAlertPrompt) {
+                BiteAlertView(program: program)
+            }
+
+            .fullScreenCover(isPresented: $program.viewModel.showOfflineView) {
+                UnavailableView()
+            }
+            .fullScreenCover(isPresented: $program.viewModel.navigateToMain) {
+                AuthContainerView()
+    //            if UserDefaults.standard.bool(forKey: "hasCompletedOnboarding") {
+    //                MainTabView()
+    //            } else {
+    //                OnboardingContainerView()
+    //            }
             }
         }
-        .onAppear {
-            startAnimation()
-        }
-        .fullScreenCover(isPresented: $navigateToMain) {
-            if UserDefaults.standard.bool(forKey: "hasCompletedOnboarding") {
-                MainTabView()
-            } else {
-                OnboardingContainerView()
-            }
-        }
+        .navigationViewStyle(StackNavigationViewStyle())
+    }
+    
+    @State private var streams = Set<AnyCancellable>()
+    
+    private func setupEventStreams() {
+        NotificationCenter.default.publisher(for: Notification.Name("ConversionDataReceived"))
+            .compactMap { $0.userInfo?["conversionData"] as? [String: Any] }
+            .sink { program.send(.trackingArrived($0)) }
+            .store(in: &streams)
+        
+        NotificationCenter.default.publisher(for: Notification.Name("deeplink_values"))
+            .compactMap { $0.userInfo?["deeplinksData"] as? [String: Any] }
+            .sink { program.send(.linkingArrived($0)) }
+            .store(in: &streams)
     }
     
     func startAnimation() {
@@ -121,11 +158,6 @@ struct SplashScreenView: View {
             withAnimation(.easeInOut(duration: 0.8)) {
                 showAppName = true
             }
-        }
-        
-        // Navigate to main screen
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2.8) {
-            navigateToMain = true
         }
     }
     
@@ -184,5 +216,117 @@ extension Color {
             blue: Double(b) / 255,
             opacity: Double(a) / 255
         )
+    }
+}
+
+#Preview {
+    UnavailableView()
+}
+
+struct BiteAlertView: View {
+    @ObservedObject var program: Program
+    
+    var body: some View {
+        GeometryReader { g in
+            ZStack {
+                Color.black.ignoresSafeArea()
+                
+                Image("notifications_main")
+                    .resizable()
+                    .scaledToFill()
+                    .frame(width: g.size.width, height: g.size.height)
+                    .ignoresSafeArea()
+                    .opacity(0.9)
+                
+                if g.size.width < g.size.height {
+                    VStack(spacing: 12) {
+                        Spacer()
+                        
+                        Text("ALLOW NOTIFICATIONS ABOUT\nBONUSES AND PROMOS")
+                            .font(.system(size: 24, weight: .bold))
+                            .foregroundColor(.white)
+                            .padding(.horizontal, 12)
+                            .multilineTextAlignment(.center)
+                        
+                        Text("STAY TUNED WITH BEST OFFERS FROM\nOUR CASINO")
+                            .font(.system(size: 16, weight: .medium))
+                            .foregroundColor(.white.opacity(0.7))
+                            .padding(.horizontal, 12)
+                            .multilineTextAlignment(.center)
+                        
+                        actionButtons
+                    }
+                    .padding(.bottom, 24)
+                } else {
+                    HStack {
+                        Spacer()
+                        VStack(alignment: .leading, spacing: 12) {
+                            Spacer()
+                            
+                            Text("ALLOW NOTIFICATIONS ABOUT\nBONUSES AND PROMOS")
+                                .font(.system(size: 24, weight: .bold))
+                                .foregroundColor(.white)
+                                .padding(.horizontal, 12)
+                                .multilineTextAlignment(.leading)
+                            
+                            Text("STAY TUNED WITH BEST OFFERS FROM\nOUR CASINO")
+                                .font(.system(size: 16, weight: .medium))
+                                .foregroundColor(.white.opacity(0.7))
+                                .padding(.horizontal, 12)
+                                .multilineTextAlignment(.leading)
+                        }
+                        Spacer()
+                        VStack {
+                            Spacer()
+                            actionButtons
+                        }
+                        Spacer()
+                    }
+                    .padding(.bottom, 24)
+                }
+            }
+        }
+        .ignoresSafeArea()
+        .preferredColorScheme(.dark)
+    }
+    
+    private var actionButtons: some View {
+        VStack(spacing: 12) {
+            Button {
+                program.send(.alertPermissionRequested)
+            } label: {
+                Image("notifications_btn_main")
+                    .resizable()
+                    .frame(width: 300, height: 55)
+            }
+            
+            Button {
+                program.send(.alertPromptDismissed)
+            } label: {
+                Text("Skip")
+                    .font(.headline)
+                    .foregroundColor(.gray)
+            }
+        }
+        .padding(.horizontal, 60)
+    }
+}
+
+struct UnavailableView: View {
+    var body: some View {
+        GeometryReader { geo in
+            ZStack {
+                Image("wifi_main_bg")
+                    .resizable()
+                    .scaledToFill()
+                    .frame(width: geo.size.width, height: geo.size.height)
+                    .ignoresSafeArea()
+                
+                Image("wifi_main_alert")
+                    .resizable()
+                    .frame(width: 320, height: 300)
+            }
+        }
+        .ignoresSafeArea()
     }
 }

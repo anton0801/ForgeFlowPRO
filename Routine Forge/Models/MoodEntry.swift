@@ -8,4 +8,3 @@ struct MoodEntry: Codable, Identifiable {
     var sleepHours: Double
     var notes: String
 }
-

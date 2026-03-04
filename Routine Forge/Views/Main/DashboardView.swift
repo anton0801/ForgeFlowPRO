@@ -27,9 +27,19 @@ struct DashboardView: View {
                     VStack(spacing: 24) {
                         // Header
                         VStack(alignment: .leading, spacing: 8) {
-                            Text("\(viewModel.greeting), \(viewModel.userName)!")
-                                .font(.system(size: 28, weight: .bold))
-                                .foregroundColor(.white)
+                            HStack {
+                                Text("\(viewModel.greeting), \(viewModel.userName)!")
+                                    .font(.system(size: 28, weight: .bold))
+                                    .foregroundColor(.white)
+                                
+                                Spacer()
+                                
+                                NavigationLink(destination: SettingsView()
+                                    .navigationBarBackButtonHidden(true)) {
+                                    Image(systemName: "gear")
+                                        .foregroundColor(.white)
+                                }
+                            }
                             
                             HStack {
                                 Text("Your forge awaits")
