@@ -57,9 +57,9 @@
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		8FB6077C2F43CA1A00BDE229 /* Routine Forge */ = {
+		8FB6077C2F43CA1A00BDE229 /* RoutineForge */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = "Routine Forge";
+			path = RoutineForge;
 			sourceTree = "<group>";
 		};
 		8FB60E632F58513500BDE229 /* ForgingExtensionNotifications */ = {
@@ -100,7 +100,7 @@
 			isa = PBXGroup;
 			children = (
 				8FB60E5D2F5850A800BDE229 /* RoutineForge-Info.plist */,
-				8FB6077C2F43CA1A00BDE229 /* Routine Forge */,
+				8FB6077C2F43CA1A00BDE229 /* RoutineForge */,
 				8FB60E632F58513500BDE229 /* ForgingExtensionNotifications */,
 				8FB60E572F584C4F00BDE229 /* Frameworks */,
 				8FB6077B2F43CA1A00BDE229 /* Products */,
@@ -141,7 +141,7 @@
 				8FB60E682F58513500BDE229 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
-				8FB6077C2F43CA1A00BDE229 /* Routine Forge */,
+				8FB6077C2F43CA1A00BDE229 /* RoutineForge */,
 			);
 			name = RoutineForge;
 			packageProductDependencies = (
